@@ -1,0 +1,1 @@
+The directory contains build script on platform windows.
