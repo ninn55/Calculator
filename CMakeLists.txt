@@ -4,6 +4,6 @@ project(Calculator)
 
 add_subdirectory(src/Gen)
 
-add_executable(Calculator main.cpp)
+add_executable(Calculator src/main.cpp)
 
 target_link_libraries(Calculator Gen)

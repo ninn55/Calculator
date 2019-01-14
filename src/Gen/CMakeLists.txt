@@ -1,3 +1,3 @@
 project (Gen)
 
-add_executable(Gen Generate.cpp)
+add_library(Gen Generate.cpp Generate.h)

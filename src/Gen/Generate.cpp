@@ -15,7 +15,7 @@ namespace Generate
 			ret._num = rand() - RAND_MAX / 2;
 			if (abs(ret._num) > 1000)
 				ret._num /= 100;
-			stringstream ss;
+			std::stringstream ss;
 			ss << (ret._num < 0 ? "(" : "") << ret._num << (ret._num < 0 ? ")" : "");
 			ret._str = ss.str();
 		}

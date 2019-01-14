@@ -8,22 +8,27 @@
 #include <string>
 #include <sstream>
 
-struct Pol
+using std::string;
+namespace Generate
 {
-	string _str;
-	double _num;
-	int _property;//+-:0  */:1  ():2
-};
+	struct Pol
+	{
+		string _str;
+		double _num;
+		int _property;//+-:0  */:1  ():2
+	};
 
-enum class Oper
-{
-	Add,
-	Sub,
-	Mul,
-	Dev,
+	enum class Oper
+	{
+		Add,
+		Sub,
+		Mul,
+		Dev,
 
-	MAX_OPER
+		MAX_OPER
 
-};
+	};
 
+	Pol getRandomPol(int depth);
+}
 #endif //CALCULATOR_GEN_GENERATE_H_
