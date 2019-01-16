@@ -12,7 +12,7 @@ double trig_function(std::string expression_string)
 	typedef exprtk::expression<double>     expression_t;
 	typedef exprtk::parser<double>             parser_t;
 	
-	T x = T(1);
+	double x = double(1);
 
 	symbol_table_t symbol_table;
 	symbol_table.add_variable("x",x, true);
@@ -23,7 +23,7 @@ double trig_function(std::string expression_string)
 	parser_t parser;
 	parser.compile(expression_string,expression);
 
-	T y = expression.value();
+	double y = expression.value();
 	return y;
 }
 

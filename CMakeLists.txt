@@ -22,3 +22,10 @@ add_subdirectory(test/test2)
 add_executable(Calculator src/main.cpp)
 
 target_link_libraries(Calculator Gen)
+
+enable_testing()
+add_test (test_run1 test1)
+set_tests_properties(test_run1 PROPERTIES PASS_REGULAR_EXPRESSION "Check")
+
+add_test (test_run2 test2)
+set_tests_properties(test_run2 PROPERTIES PASS_REGULAR_EXPRESSION "Check")
