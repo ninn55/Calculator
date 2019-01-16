@@ -12,6 +12,14 @@ int main()
 	int error;
 	const char *cstr = pol._str.c_str();
 	double c = te_interp(cstr, &error);
-	if(abs(c - pol._num) < 0.0001) printf("Check");
+	
+	for(int i = 0; i < 1000; ++i)
+	{
+		if(abs(c - pol._num) > 0.0001)
+			goto END;
+	}
+	printf("Check");
+	
+	END:
 	return 0;
 }

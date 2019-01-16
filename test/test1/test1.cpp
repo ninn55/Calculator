@@ -34,6 +34,13 @@ int main()
 	Pol pol = getRandomPol(rand() % 5 + 1);
 	
 	double c = trig_function(pol._str);
-	if(abs(c - pol._num) < 0.0001) printf("Check");
+	for(int i = 0; i < 1000; ++i)
+	{
+		if(abs(c - pol._num) > 0.0001)
+			goto END;
+	}
+	printf("Check");
+	
+	END:
 	return 0;
 }
