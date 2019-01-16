@@ -5,6 +5,7 @@
 
 #include "../../include/exprtk/exprtk.hpp"
 #include "../../src/Gen/Generate.h"
+#include "../../src/macro.h"
 
 double trig_function(std::string expression_string)
 {
@@ -30,17 +31,24 @@ double trig_function(std::string expression_string)
 int main()
 {
 	using namespace Generate;
-	srand((unsigned)time(NULL)); 
-	Pol pol = getRandomPol(rand() % 5 + 1);
-	
-	double c = trig_function(pol._str);
+
+	srand((unsigned)time(NULL));
+	Pol pol;
+	double c;
 	for(int i = 0; i < 1000; ++i)
 	{
-		if(abs(c - pol._num) > 0.0001)
+#ifdef TRACE_ON
+		printf("Test No.%d:\n", i);
+		pol = getRandomPol(3);
+#else
+		Pol pol = getRandomPol(rand() % 5 + 1);
+#endif
+		c = trig_function(pol._str);
+		if(abs(c - pol._num)/c > 0.0001)
 			goto END;
 	}
 	printf("Check");
-	
+
 	END:
 	return 0;
 }

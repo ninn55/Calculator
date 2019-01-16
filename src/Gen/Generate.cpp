@@ -1,5 +1,9 @@
 //include
+#include <vector>
+#include <stdio.h>
+#include <sstream>
 #include "Generate.h"
+#include "../macro.h"
 
 namespace Generate
 {	
@@ -28,13 +32,17 @@ namespace Generate
 				ret._property = 0;
 			else
 				ret._property = 1;
-			if (type == Oper::Dev && pol2._num == 0)
+			if (type == Oper::Dev && abs(pol2._num - 0) < 0.0001)
 				type = Oper::Mul;
 			bool forceBracket1 = rand() % 10 == 0;
 			forceBracket1 |= pol1._property < ret._property;
 			bool forceBracket2 = rand() % 10 == 0;
 			forceBracket2 |= pol2._property < ret._property;
-
+			{
+				bool cndtn1 = (type == Oper::Sub) & (ret._property == 0);
+				bool cndtn2 = (type == Oper::Dev) & (ret._property == 1);
+				if(cndtn1 | cndtn2) forceBracket2 |= true;
+			}
 			ret._str += (forceBracket1 ? "(" : "") + pol1._str + (forceBracket1 ? ")" : "");
 		
 			constexpr int randomSpaceNum = 3;
@@ -62,6 +70,12 @@ namespace Generate
 			ret._str += (forceBracket2 ? "(" : "") + string(rand() % randomSpaceNum, ' ') 
 				+ pol2._str + string(rand() % randomSpaceNum, ' ')
 				+(forceBracket2 ? ")" : "");
+#ifdef TRACE_ON
+		    printf("Depth:%d\n", depth);
+			pol1.present();
+			pol2.present();
+			ret.present();
+#endif
 		}
 		return ret;
 	}
