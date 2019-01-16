@@ -13,6 +13,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 add_subdirectory(src/Gen)
 #add project tinyexpr as a standard
 add_subdirectory(include/tinyexpr)
+#add test project 1
+add_subdirectory(test/test1)
 #add test project 2
 add_subdirectory(test/test2)
 
@@ -20,7 +22,3 @@ add_subdirectory(test/test2)
 add_executable(Calculator src/main.cpp)
 
 target_link_libraries(Calculator Gen)
-
-enable_testing()
-add_test (test_run test2)
-set_tests_properties(test_run PROPERTIES PASS_REGULAR_EXPRESSION "Check")

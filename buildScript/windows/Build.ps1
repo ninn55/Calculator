@@ -1,3 +1,3 @@
 cd ../../
-cmake --build . --config Release  -- /m
+cmake --build . --config Release  -- /maxcpucount:3
 Read-Host -Prompt "Press Enter to exit"
