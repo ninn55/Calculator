@@ -3,9 +3,13 @@
 #include <time.h>
 #include <string>
 
-#include "../../include/exprtk/exprtk.hpp"
+#include "pch.h"
 #include "../../src/Gen/Generate.h"
 #include "../../src/macro.h"
+
+#ifndef _PCH
+#error Missing precompiled header
+#endif//_PCH
 
 double trig_function(std::string expression_string)
 {
