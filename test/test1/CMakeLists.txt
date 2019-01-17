@@ -1,8 +1,8 @@
 project(test1)
 
-include(../../PrecompiledHeader.cmake)
 add_compile_options(-bigobj)
 
-add_executable(test1 test1.cpp pch.cpp)
+add_executable(test1 pch.cpp test1.cpp pch.h)
 target_link_libraries(test1 Gen)
-add_precompiled_header(test1 pch.h SOURCE_CXX pch.cpp FORCEINCLUDE)
+set_target_properties(test1 PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "pch.h")
+cotire(test1)

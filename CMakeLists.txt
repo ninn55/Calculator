@@ -1,5 +1,8 @@
 cmake_minimum_required (VERSION 3.0)
 
+set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake")
+include(cotire)
+
 project(Calculator)
 
 #set_property(GLOBAL PROPERTY USE_FOLDERS ON)
